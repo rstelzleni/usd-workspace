@@ -15,5 +15,5 @@ mkdir USD-github
 git clone https://github.com/PixarAnimationStudios/USD USD-github/USD
 ./docker-build.sh
 ./build-usd.sh -b USD-github
-./usd-run.sh -b USD-github python -c "from pixar import Usd; print dir(Usd)"
+./usd-run.sh -b USD-github python -c "from pxr import Usd; print dir(Usd)"
 ```
