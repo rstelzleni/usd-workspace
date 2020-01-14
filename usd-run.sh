@@ -44,7 +44,7 @@ if [ "$version" != "" ]; then
 fi
 
 if [ "$usd_dir" != "" ]; then
-    usd_dir="-v `pwd`/${usd_dir}/USD-inst:/opt/USD-inst"
+    usd_dir="-v `pwd`/${usd_dir}/USD:/opt/USD -v `pwd`/${usd_dir}/USD-inst:/opt/USD-inst"
 fi
 
 docker run -it --rm $usd_dir $image_name $@

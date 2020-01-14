@@ -1,6 +1,6 @@
 #!/bin/bash
 
-buildcmd="python ./build_scripts/build_usd.py ../USD-inst --tests"
+buildcmd="python3 ./build_scripts/build_usd.py ../USD-inst --tests"
 image_name=usd-build-env
 version=centos
 usd_dir=USD
