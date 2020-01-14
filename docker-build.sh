@@ -32,4 +32,4 @@ if [ "$version" != "" ]; then
     file_name=${file_name}-${version}
 fi
 
-docker build ./docker -t image_name -f ./docker/$file_name
+docker build ./docker -t $image_name -f ./docker/$file_name
