@@ -18,26 +18,21 @@ RUN yum -y --setopt=tsflags=nodocs update && \
         libXrandr \
         libXrandr-devel \
         make \
-        python \
-        python-devel \
-        python3 \
-        python3-devel \
         zlib \
         zlib-devel \
         && \
     yum clean all
 
-# Python 2 pyside stuff
-RUN yum -y setopt=tsflags=nodocs install epel-release
-RUN yum -y setopt=tsflags=nodocs install python-pip pyside-tools
+WORKDIR /opt/python
+RUN curl -O https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz && tar xzf Python-3.8.1.tgz
+RUN cd Python-3.8.1 && ./configure --enable-optimizations && make altinstall
 
-RUN pip install PySide2 jinja2 PyOpenGL
-RUN pip3 install PySide2
+ENV PATH=/opt/USD-inst/bin:/opt/python/bin:${PATH}
+ENV PYTHONPATH=/opt/USD-inst/lib/python:${PYTHONPATH}
+
+RUN python -m pip install PySide2 PyOpenGL
 
 WORKDIR /opt/USD
-
-ENV PATH=/opt/USD-inst/bin:${PATH}
-ENV PYTHONPATH=/opt/USD-inst/lib/python:${PYTHONPATH}
 
 CMD [ "/bin/bash" ]
 
